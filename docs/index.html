@@ -10,11 +10,13 @@
     <title>Tutoriales | SiteSystem</title>
 
     <!-- Bootstrap CSS -->
+    <link href="https://getbootstrap.com/docs/3.4/assets/css/docs.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <!-- Bootstrap Theme CSS -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-    <!-- Monaco Editor CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.19.2/min/vs/editor/editor.main.min.css">
+    <!-- Monaco Editor CSS --
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.19.2/min/vs/editor/editor.main.min.css"> -->
     <!-- Google Fonts -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
 
@@ -29,16 +31,45 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     <!-- Bootstrap tooltips JS -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <!-- Monaco Editor JS -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.19.2/min/vs/base/worker/workerMain.min.js"></script>
+    <!-- Monaco Editor JS --
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.19.2/min/vs/base/worker/workerMain.min.js"></script> -->
 </head>
 <body>
     <div class="container">
         <hr/>
         <div class="row">
-            <div class="col-md-12">
-                <h1><i class="fa fa-user fa-lg"></i> HOLA</h1>
-                <div id="mon-editor" style="height:100%;"></div>
+            <div class="col-xs-12 col-sm-6 col-md-12">
+                <h1 class="text-center"><i class="fa fa-user fa-lg"></i> Hola <small>Mundo</small></h1>
+                <p class="lead">Párrafo normal</p>
+
+                <h2>Inline</h2>
+                <p>
+                    You can use the mark tag to <mark>highlight</mark> text.
+                    Wrap inline snippets of code with <code>&lt;code&gt;</code>.
+                </p>
+                <div class="bs-example">
+                    For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+                </div>
+                <div class="bs-clipboard">
+                    <button type="button" class="btn-clipboard" title="Copy to clipboard">Copiar</button>
+                </div>
+                <figure class="highlight">
+                    <pre>
+                        For example, <span class="nt">code</span> section should be wrapped as inline.
+                    </pre>
+                    <pre>
+                        To switch directories, type <kbd>cd</kbd> followed by the name of the directory.
+                        To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
+                    </pre>
+                    <pre>
+                        <var>y</var> = <var>m</var><var>x</var> + <var>b</var>
+                    </pre>
+                    <samp>
+                        This text is meant to be treated as sample output from a computer program.
+                    </samp>
+                </figure>
+
+                <!-- <div id="mon-editor" style="height:100%;"></div> -->
             </div> <!-- ./col -->
         </div> <!-- ./row -->
     </div> <!-- ./container -->
