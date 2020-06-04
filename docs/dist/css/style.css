@@ -1,3 +1,14 @@
-body {
-  font-family: Open sans, sans-serif;
+html, body {
+  /* font-family: Open sans, sans-serif; */
+  font-family: "Roboto";
+  padding-top: 25px;
+}
+
+.backTotop {
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  color: white;
 }

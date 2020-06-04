@@ -10,11 +10,10 @@
     <title>Tutoriales | SiteSystem</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://getbootstrap.com/docs/3.4/assets/css/docs.min.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <!-- Bootstrap Theme CSS -->
+    <!-- Bootstrap Themes CSS -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://getbootstrap.com/docs/3.4/assets/css/docs.min.css">
     <!-- Monaco Editor CSS --
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.19.2/min/vs/editor/editor.main.min.css"> -->
     <!-- Google Fonts -->
@@ -33,46 +32,337 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
     <!-- Monaco Editor JS --
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.19.2/min/vs/base/worker/workerMain.min.js"></script> -->
+    <!-- Clipboard JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            $(window).scroll(function ()
+            {
+                if ( $(this).scrollTop() > 50 )
+                    $('#back-to-top').fadeIn();
+                else
+                    $('#back-to-top').fadeOut();
+            });
+
+            $( "#myButton" ).click(function()
+            // $('#myButton').on('click', function ()
+            {
+                $.ajax(
+                {
+                    beforeSend: function( xhr )
+                    {
+                        $("#myButton").text("Sending...");
+                        // $("#myButton").prop(disabled, true);
+                    }
+                })
+                .done(function( data )
+                {
+                    $(this).html("Sent")
+                });
+            });
+        });
+    
+        $(function ()
+        {
+            $('[data-toggle="tooltip"]').tooltip({
+                container: 'body',
+                html: true,
+                trigger: "hover",
+                delay: { "show": 50, "hide": 100 }
+            });
+    
+            $('[data-toggle="popover"]').popover({
+                container: 'body',
+                html: true,
+                trigger: "hover",
+                delay: { "show": 50, "hide": 100 }
+            });
+        });
+    </script>
 </head>
 <body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+      
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav> <!-- /.nav -->
+
+    <!-- Carrusel / Banner / Slider -->
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+      
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="/docs/dist/img/slider/christopher-gower-m_HRfLhgABo-unsplash.jpg" alt="...">
+                <div class="carousel-caption">
+                    <h3>Imágen 1</h3>
+                    <p>Caption 1</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/docs/dist/img/slider/safar-safarov-MSN8TFhJ0is-unsplash.jpg" alt="...">
+                <div class="carousel-caption">
+                    <h3>Imágen 2</h3>
+                    <p>Caption 2</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/docs/dist/img/slider/fotis-fotopoulos-LJ9KY8pIH3E-unsplash.jpg" alt="...">
+                <div class="carousel-caption">
+                    <h3>Imágen 3</h3>
+                    <p>Caption 3</p>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+
     <div class="container">
-        <hr/>
+        
+        <!-- Título -->
+        <div class="page-header">
+            <h1>
+                <i class="fa fa-book fa-md"></i> Tutoriales 
+                <small>Computación / Informática / TIC´s</small>
+            </h1>
+        </div>
+
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Hello, world!</h1>
+                <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+                <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary">Loading state
+                </button>
+            </div>
+        </div>
+
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-12">
-                <h1 class="text-center"><i class="fa fa-user fa-lg"></i> Hola <small>Mundo</small></h1>
-                <p class="lead">Párrafo normal</p>
+            <div class="col-md-2">
+                <!-- Nav tabs -->
+                <ul class="nav nav-stacked nav-pills list-group" role="tablist">
+                    <li role="presentation" class="active" data-toggle="tooltip" data-placement="right" title="<b>Tooltip on right</b>">
+                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                            Home <span class="badge pull-right">14</span>
+                        </a>
+                    </li>
+                    <li role="presentation" data-container="body" data-toggle="popover" data-placement="right" title="<b>Popover title</b>" data-content="And here's some amazing content. It's very engaging. Right?">
+                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                        Dropdown <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li role="presentation">
+                                <a href="#dropdown1" aria-controls="dropdown1" role="tab" data-toggle="tab">Dropdown 1</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#dropdown2" aria-controls="dropdown2" role="tab" data-toggle="tab">Dropdown 2</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li role="presentation">
+                                <a href="#dropdown3" aria-controls="dropdown3" role="tab" data-toggle="tab">Dropdown 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-                <h2>Inline</h2>
-                <p>
-                    You can use the mark tag to <mark>highlight</mark> text.
-                    Wrap inline snippets of code with <code>&lt;code&gt;</code>.
-                </p>
-                <div class="bs-example">
-                    For example, <code>&lt;section&gt;</code> should be wrapped as inline.
-                </div>
-                <div class="bs-clipboard">
-                    <button type="button" class="btn-clipboard" title="Copy to clipboard">Copiar</button>
-                </div>
-                <figure class="highlight">
-                    <pre>
-                        For example, <span class="nt">code</span> section should be wrapped as inline.
-                    </pre>
-                    <pre>
-                        To switch directories, type <kbd>cd</kbd> followed by the name of the directory.
-                        To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
-                    </pre>
-                    <pre>
-                        <var>y</var> = <var>m</var><var>x</var> + <var>b</var>
-                    </pre>
-                    <samp>
-                        This text is meant to be treated as sample output from a computer program.
-                    </samp>
-                </figure>
+            <div class="col-md-10">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    
+                    <!-- Index 1 -->
+                    <div id="home" class="tab-pane fade in active" role="tabpanel">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading"><i class="fa fa-book"></i>&nbsp; HOME</div>
+                        </div>
+                        <h2>
+                            ¿Cómo abrir shell de comandos (cmd) desde una carpeta dentro del explorador de Windows 10?
+                        </h2>
+                        <div class="panel panel-default">
+                            <!-- <div class="panel-heading"><h3 class="panel-title">Panel title</h3></div> -->
+                            <div class="panel-body">
+                                <p>
+                                    You can use the mark tag to <mark>highlight</mark> text.
+                                    Wrap inline snippets of code with <code>&lt;code&gt;</code>.
+                                </p>
+                
+                                <p class="alert alert-info" role="alert">
+                                    Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                </p>
+                
+                                <div class="row">
 
-                <!-- <div id="mon-editor" style="height:100%;"></div> -->
-            </div> <!-- ./col -->
-        </div> <!-- ./row -->
+                                    <div class="col-sm-6 col-md-4">
+                                        <div class="thumbnail">
+                                            <img src="dist/img/consola-win10/menu-contextual.png" alt="...">
+                                            <div class="caption">
+                                                <h3><span class="label label-success">1</span> Thumbnail label</h3>
+                                                <div class="bs-callout bs-callout-info">
+                                                    <h4>Info</h4>
+                                                    <p>
+                                                        Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                                    </p>
+                                                </div>
+                                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-4">
+                                        <div class="thumbnail">
+                                            <img src="dist/img/consola-win10/menu-contextual.png" alt="...">
+                                            <div class="caption">
+                                                <h3><span class="label label-success">2</span> Thumbnail label</h3>
+                                                <div class="bs-callout bs-callout-info">
+                                                    <h4>Info</h4>
+                                                    <p>
+                                                        Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                                    </p>
+                                                </div>
+                                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-4">
+                                        <div class="thumbnail">
+                                            <img src="dist/img/consola-win10/menu-contextual.png" alt="...">
+                                            <div class="caption">
+                                                <h3><span class="label label-success">3</span> Thumbnail label</h3>
+                                                <div class="bs-callout bs-callout-info">
+                                                    <h4>Info</h4>
+                                                    <p>
+                                                        Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                                    </p>
+                                                </div>
+                                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="panel-footer"><h3 class="panel-title">Panel footer</h3></div> -->
+                        </div>
+                    </div> <!-- /.index 1 -->
+
+                    <div role="tabpanel" class="tab-pane fade" id="profile">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">PROFILE</div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="messages">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">MESSAGES</div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="settings">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">SETTINGS</div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="dropdown1">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">DROPDOWN 1</div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="dropdown2">DROPDOWN 2</div>
+                    <div role="tabpanel" class="tab-pane" id="dropdown3">DROPDOWN 3</div>
+                </div>
+            </div>
+        </div>
     </div> <!-- ./container -->
+
+    <!---- FOOTER ---->
+    <div class="jumbotron text-center" style="margin-bottom:0; padding-top:40px; padding-bottom:40px;">
+        <!-- Top Click -->
+        <button id="back-to-top" type="button" class="btn btn-primary btn-lg backTotop" role="button" data-toggle="tooltip" onclick="$('html,body').animate({scrollTop:0},'slow'); document.getElementById('back-to-top').blur(); return false;">
+            <i class="fa fa-chevron-up fa-lg"></i>
+        </button>
+
+        <span class="text-success">
+            <i class="fa fa-hand-holding-usd fa-lg"></i>&nbsp; 
+            <b>UPIICSA - </b><b>R<small>ECURSOS</small> M<small>ATERIALES</small> (</b>Compras<b>)</b><br />
+        </span>
+        <!-- Default to the left -->
+        <strong>&copy;<!-- © --> 2019 </strong> Desarrollado por Sitio Web - Unidad de Informática (UDI).<br />
+            <i class="fa fa-desktop fa-lg"></i> <i class="fa fa-laptop fa-lg"></i> 
+            <i class="fa fa-tablet-alt fa-lg"></i> <i class="fa fa-mobile-alt fa-lg"></i> 
+        <b>Version</b> Alpha 0.0.1
+    </div> <!-- /.container -->
 </body>
 </html>
 
