@@ -12,3 +12,13 @@ html, body {
   display: none;
   color: white;
 }
+
+.menu-lateral li {
+  border: 1px solid #efefef;
+  border-radius: 5px;
+}
+
+.dropdown-menu li {
+  border: none;
+  border-radius: 0px;
+}

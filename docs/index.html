@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="theme-color" content="#520028" /> <!-- Chrome, Firefox OS and Opera -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="#520028" /> <!-- iOS Safari -->
-    <link rel="icon" type="image/icon" href="dist/img/logotipo.ico" /> <!-- Ícono -->
+    <link rel="icon" type="image/icon" href="dist/img/icono.ico" /> <!-- Ícono -->
     <title>Tutoriales | SiteSystem</title>
 
     <!-- Bootstrap CSS -->
@@ -136,7 +136,7 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav> <!-- /.nav -->
-
+		
     <!-- Carrusel / Banner / Slider -->
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -149,21 +149,21 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="/docs/dist/img/slider/christopher-gower-m_HRfLhgABo-unsplash.jpg" alt="...">
+                <img src="dist/img/slider/img1.jpg" alt="...">
                 <div class="carousel-caption">
                     <h3>Imágen 1</h3>
                     <p>Caption 1</p>
                 </div>
             </div>
             <div class="item">
-                <img src="/docs/dist/img/slider/safar-safarov-MSN8TFhJ0is-unsplash.jpg" alt="...">
+                <img src="dist/img/slider/img2.jpg" alt="...">
                 <div class="carousel-caption">
                     <h3>Imágen 2</h3>
                     <p>Caption 2</p>
                 </div>
             </div>
             <div class="item">
-                <img src="/docs/dist/img/slider/fotis-fotopoulos-LJ9KY8pIH3E-unsplash.jpg" alt="...">
+                <img src="dist/img/slider/img3.jpg" alt="...">
                 <div class="carousel-caption">
                     <h3>Imágen 3</h3>
                     <p>Caption 3</p>
@@ -192,20 +192,10 @@
             </h1>
         </div>
 
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Hello, world!</h1>
-                <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-                <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary">Loading state
-                </button>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col-md-2">
                 <!-- Nav tabs -->
-                <ul class="nav nav-stacked nav-pills list-group" role="tablist">
+                <ul class="nav nav-stacked nav-pills menu-lateral" role="tablist">
                     <li role="presentation" class="active" data-toggle="tooltip" data-placement="right" title="<b>Tooltip on right</b>">
                         <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
                             Home <span class="badge pull-right">14</span>
@@ -214,7 +204,7 @@
                     <li role="presentation" data-container="body" data-toggle="popover" data-placement="right" title="<b>Popover title</b>" data-content="And here's some amazing content. It's very engaging. Right?">
                         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" data-container="body" data-toggle="popover" data-placement="right" title="<b class='text-success'>Popover title</b>" data-content="And here's some amazing content. It's very engaging. Right?">
                         <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a>
                     </li>
                     <li role="presentation">
@@ -252,70 +242,74 @@
                         <h2>
                             ¿Cómo abrir shell de comandos (cmd) desde una carpeta dentro del explorador de Windows 10?
                         </h2>
+
                         <div class="panel panel-default">
                             <!-- <div class="panel-heading"><h3 class="panel-title">Panel title</h3></div> -->
                             <div class="panel-body">
-                                <p>
-                                    You can use the mark tag to <mark>highlight</mark> text.
-                                    Wrap inline snippets of code with <code>&lt;code&gt;</code>.
-                                </p>
+                                You can use the mark tag to <mark>highlight</mark> text.
+                                Wrap inline snippets of code with <code>&lt;code&gt;</code>.
+                            </div>
+                            <!-- <div class="panel-footer"><h3 class="panel-title">Panel footer</h3></div> -->
+                        </div>
+
+                        <p class="alert alert-info" role="alert">
+                            Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                        </p>
+
+                        <pre>> Aquí va código</pre>
+                        <pre><var>y</var> = <var>m</var><var>x</var> + <var>b</var></pre>
+                        <pre>To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br></pre>
+                        <pre>To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></pre>
                 
-                                <p class="alert alert-info" role="alert">
-                                    Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
-                                </p>
-                
-                                <div class="row">
+                        <div class="row">
 
-                                    <div class="col-sm-6 col-md-4">
-                                        <div class="thumbnail">
-                                            <img src="dist/img/consola-win10/menu-contextual.png" alt="...">
-                                            <div class="caption">
-                                                <h3><span class="label label-success">1</span> Thumbnail label</h3>
-                                                <div class="bs-callout bs-callout-info">
-                                                    <h4>Info</h4>
-                                                    <p>
-                                                        Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
-                                                    </p>
-                                                </div>
-                                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+									<img src="dist/img/consola-win10/menu-contextual.png" alt="...">
+                                    <div class="caption">
+                                        <h3><span class="label label-success">1</span> Thumbnail label</h3>
+                                        <div class="bs-callout bs-callout-info">
+                                            <h4>Info</h4>
+                                            <p>
+                                                Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                            </p>
                                         </div>
-                                    </div>
-
-                                    <div class="col-sm-6 col-md-4">
-                                        <div class="thumbnail">
-                                            <img src="dist/img/consola-win10/menu-contextual.png" alt="...">
-                                            <div class="caption">
-                                                <h3><span class="label label-success">2</span> Thumbnail label</h3>
-                                                <div class="bs-callout bs-callout-info">
-                                                    <h4>Info</h4>
-                                                    <p>
-                                                        Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
-                                                    </p>
-                                                </div>
-                                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6 col-md-4">
-                                        <div class="thumbnail">
-                                            <img src="dist/img/consola-win10/menu-contextual.png" alt="...">
-                                            <div class="caption">
-                                                <h3><span class="label label-success">3</span> Thumbnail label</h3>
-                                                <div class="bs-callout bs-callout-info">
-                                                    <h4>Info</h4>
-                                                    <p>
-                                                        Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
-                                                    </p>
-                                                </div>
-                                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                            </div>
-                                        </div>
+                                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="panel-footer"><h3 class="panel-title">Panel footer</h3></div> -->
+
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="dist/img/consola-win10/menu-contextual.png" alt="...">
+                                    <div class="caption">
+                                        <h3><span class="label label-success">2</span> Thumbnail label</h3>
+                                        <div class="bs-callout bs-callout-info">
+                                            <h4>Info</h4>
+                                            <p>
+                                                Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                            </p>
+                                        </div>
+                                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="dist/img/consola-win10/menu-contextual.png" alt="...">
+                                    <div class="caption">
+                                        <h3><span class="label label-success">3</span> Thumbnail label</h3>
+                                        <div class="bs-callout bs-callout-info">
+                                            <h4>Info</h4>
+                                            <p>
+                                                Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                            </p>
+                                        </div>
+                                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div> <!-- /.index 1 -->
 
@@ -344,8 +338,9 @@
                 </div>
             </div>
         </div>
+        <hr/>
     </div> <!-- ./container -->
-
+    
     <!---- FOOTER ---->
     <div class="jumbotron text-center" style="margin-bottom:0; padding-top:40px; padding-bottom:40px;">
         <!-- Top Click -->
