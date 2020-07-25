@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="theme-color" content="#520028" /> <!-- Chrome, Firefox OS and Opera -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="#520028" /> <!-- iOS Safari -->
-    <link rel="icon" type="image/icon" href="dist/img/icono.ico" /> <!-- Ícono -->
-    <title>Tutoriales | SiteSystem</title>
+    <link rel="icon" type="image/jpg" href="dist/img/logo.jpg" /> <!-- Ícono -->
+    <title>Soporte Técnico PC</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -61,6 +61,61 @@
                     $(this).html("Sent")
                 });
             });
+
+
+            loadGallery(true, 'img.hover-shadow');
+
+            //This function disables buttons when needed
+            function disableButtons(counter_max, counter_current){
+                $('#show-previous-image, #show-next-image').show();
+                if(counter_max == counter_current){
+                    $('#show-next-image').hide();
+                } else if (counter_current == 1){
+                    $('#show-previous-image').hide();
+                }
+            }
+
+            /**
+             *
+             * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+             * @param setClickAttr  Sets the attribute for the click handler.
+             */
+
+            function loadGallery(setIDs, setClickAttr){
+                var current_image,
+                    selector,
+                    counter = 0;
+
+                $('#show-next-image, #show-previous-image').click(function(){
+                    if($(this).attr('id') == 'show-previous-image'){
+                        current_image--;
+                    } else {
+                        current_image++;
+                    }
+
+                    selector = $('[data-image-id="' + current_image + '"]');
+                    updateGallery(selector);
+                });
+
+                function updateGallery(selector) {
+                    var $sel = selector;
+                    current_image = $sel.data('image-id');
+                    $('#image-gallery-caption').text($sel.data('caption'));
+                    $('#image-gallery-title').text($sel.data('title'));
+                    $('#image-gallery-image').attr('src', $sel.data('image'));
+                    disableButtons(counter, $sel.data('image-id'));
+                }
+
+                if(setIDs == true){
+                    $('[data-image-id]').each(function(){
+                        counter++;
+                        $(this).attr('data-image-id',counter);
+                    });
+                }
+                $(setClickAttr).on('click',function(){
+                    updateGallery($(this));
+                });
+            }
         });
     
         $(function ()
@@ -149,26 +204,26 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="dist/img/slider/img1.jpg" alt="...">
-                <div class="carousel-caption">
+                <img src="dist/img/slider/cartel.png" alt="...">
+                <!-- <div class="carousel-caption">
                     <h3>Imágen 1</h3>
                     <p>Caption 1</p>
-                </div>
+                </div> -->
             </div>
-            <div class="item">
-                <img src="dist/img/slider/img2.jpg" alt="...">
+            <!-- <div class="item">
+                <img src="dist/img/slider/cartel.png" alt="...">
                 <div class="carousel-caption">
                     <h3>Imágen 2</h3>
                     <p>Caption 2</p>
                 </div>
             </div>
-            <div class="item">
+            <!-- <div class="item">
                 <img src="dist/img/slider/img3.jpg" alt="...">
                 <div class="carousel-caption">
                     <h3>Imágen 3</h3>
                     <p>Caption 3</p>
                 </div>
-            </div>
+            </div> -->
         </div>
       
         <!-- Controls -->
@@ -183,12 +238,12 @@
     </div>
 
     <div class="container">
-        
+        <hr style="margin-bottom: -20px;"/>
         <!-- Título -->
-        <div class="page-header">
+        <div class="page-header text-center">
             <h1>
-                <i class="fa fa-book fa-md"></i> Tutoriales 
-                <small>Computación / Informática / TIC´s</small>
+                <i class="fa fa-desktop fa-md"></i>&nbsp; Soporte Técnico <br>
+                <small>Computación / Informática / Tecnologías de la Información y Comunicaciones</small>
             </h1>
         </div>
 
@@ -198,11 +253,14 @@
                 <ul class="nav nav-stacked nav-pills menu-lateral" role="tablist">
                     <li role="presentation" class="active" data-toggle="tooltip" data-placement="right" title="<b>Tooltip on right</b>">
                         <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
-                            Home <span class="badge pull-right">14</span>
+                            <i class="fa fa-home"></i>&nbsp; Inicio 
+                            <!-- <span class="badge pull-right">14</span> -->
                         </a>
                     </li>
                     <li role="presentation" data-container="body" data-toggle="popover" data-placement="right" title="<b>Popover title</b>" data-content="And here's some amazing content. It's very engaging. Right?">
-                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
+                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                            <i class="fa fa-gear"></i>&nbsp; Servicios
+                        </a>
                     </li>
                     <li role="presentation" data-container="body" data-toggle="popover" data-placement="right" title="<b class='text-success'>Popover title</b>" data-content="And here's some amazing content. It's very engaging. Right?">
                         <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a>
@@ -237,8 +295,189 @@
                     <!-- Index 1 -->
                     <div id="home" class="tab-pane fade in active" role="tabpanel">
                         <div class="panel panel-primary">
-                            <div class="panel-heading"><i class="fa fa-book"></i>&nbsp; HOME</div>
+                            <div class="panel-heading">
+                                <i class="fa fa-home"></i>&nbsp; Inicio
+                            </div>
                         </div>
+                        
+                        <div id="mixedSlider">
+                            <div class="MS-content">
+                                <div class="item">
+                                    <div class="imgTitle">
+                                        <h2 class="blogTitle">Animales</h2>
+                                        <img class="img-responsive hover-shadow" src="dist/img/slider-inferior/cartel-lp.png" alt="" href="#" data-image-id="" data-toggle="modal" data-title="Animales" data-caption="Son animales bonitos" data-image="dist/img/slider-inferior/cartel-lp.png" data-target="#image-gallery">
+                                    </div><br>
+                                    <p style="text-align: justify;">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <div class="imgTitle">
+                                        <h2 class="blogTitle">Arch</h2>
+                                        <img class="img-responsive hover-shadow" src="dist/img/slider-inferior/cartel-st.png" alt="" href="#" data-image-id="" data-toggle="modal" data-title="Arch" data-caption="Es arch" data-image="dist/img/slider-inferior/cartel-st.png" data-target="#image-gallery">
+                                    </div><br>
+                                   <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
+                                    <a href="#">Read More</a>
+                                </div>
+                                <div class="item">
+                                    <div class="imgTitle">
+                                        <h2 class="blogTitle">Nature</h2>
+                                        <img class="img-responsive hover-shadow" src="https://placeimg.com/500/300/nature" alt="" href="#" data-image-id="" data-toggle="modal" data-title="Naturaleza" data-caption="Naturaleza es vida" data-image="https://placeimg.com/500/300/nature" data-target="#image-gallery">
+                                    </div><br>
+                                   <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
+                                    <a href="#">Read More</a>
+                                </div>
+                                <div class="item">
+                                    <div class="imgTitle">
+                                        <h2 class="blogTitle">People</h2>
+                                        <img class="img-responsive hover-shadow" src="https://placeimg.com/500/300/people" alt="" href="#" data-image-id="" data-toggle="modal" data-title="Personas" data-caption="Personas con valores" data-image="https://placeimg.com/500/300/people" data-target="#image-gallery">
+                                    </div><br>
+                                    <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
+                                    <a href="#">Read More</a>
+                                </div>
+                                <div class="item">
+                                    <div class="imgTitle">
+                                        <h2 class="blogTitle">Tech</h2>
+                                        <img class="img-responsive hover-shadow" src="https://placeimg.com/500/300/tech" alt="" href="#" data-image-id="" data-toggle="modal" data-title="Tecnología" data-caption="Tecnologías Emergentes" data-image="https://placeimg.com/500/300/tech" data-target="#image-gallery">
+                                    </div><br>
+                                   <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
+                                    <a href="#">Read More</a>
+                                </div>
+                               
+                            </div>
+                            <div class="MS-controls">
+                                <button class="MS-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                                <button class="MS-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                                        <h4 class="modal-title" id="image-gallery-title"></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <center><img id="image-gallery-image" class="img-responsive" src=""></center>
+                                    </div>
+                                    <div class="modal-footer">
+                        
+                                        <div class="col-md-2">
+                                            <button id="show-previous-image" type="button" class="btn btn-primary btn-block" style="padding-bottom:4px;">
+                                                <b><i class="fa fa-chevron-left fa-lg"></i></b>
+                                            </button>
+                                        </div>
+                        
+                                        <div class="col-md-8 text-center" id="image-gallery-caption">
+                                            This text will be overwritten by jQuery
+                                        </div>
+                        
+                                        <div class="col-md-2">
+                                            <button id="show-next-image" type="button" class="btn btn-primary btn-block" style="padding-bottom:4px;">
+                                                <b><i class="fa fa-chevron-right fa-lg"></i></b>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- /.index 1 -->
+
+                    <div role="tabpanel" class="tab-pane fade" id="profile">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading"><i class="fa fa-gear"></i>&nbsp; Servicios</div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+									<img src="dist/img/tools.png" alt="...">
+                                    <div class="caption">
+                                        <h3 class="text-center">&#x2705; Revisión y Diagnóstico de Problemas</h3>
+                                        <div class="bs-callout bs-callout-info">
+                                            <h4>Descripción</h4>
+                                            <p style="text-align: justify;">
+                                                Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                            </p>
+                                        </div>
+                                        <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="dist/img/pc.png" alt="...">
+                                    <div class="caption">
+                                        <h3 class="text-center">&#x2705; Formateo e Instalación de Programas</h3>
+                                        <div class="bs-callout bs-callout-info">
+                                            <h4>Descripción</h4>
+                                            <p style="text-align: justify;">
+                                                Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                            </p>
+                                        </div>
+                                        <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="dist/img/config.png" alt="...">
+                                    <div class="caption">
+                                        <h3 class="text-center">&#x2705; Actualización y Configuración de Programas</h3>
+                                        <div class="bs-callout bs-callout-info">
+                                            <h4>Descripción</h4>
+                                            <p style="text-align: justify;">
+                                                Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                            </p>
+                                        </div>
+                                        <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="dist/img/usb.png" alt="...">
+                                    <div class="caption">
+                                        <h3 class="text-center">&#x2705; Respaldo y Recuperación de Archivos</h3>
+                                        <div class="bs-callout bs-callout-info">
+                                            <h4>Descripción</h4>
+                                            <p style="text-align: justify;">
+                                                Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                            </p>
+                                        </div>
+                                        <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="dist/img/shield.png" alt="...">
+                                    <div class="caption">
+                                        <h3 class="text-center">&#x2705; Eliminación<br>de Virus<br>y Malware</h3>
+                                        <div class="bs-callout bs-callout-info">
+                                            <h4>Descripción</h4>
+                                            <p style="text-align: justify;">
+                                                Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
+                                            </p>
+                                        </div>
+                                        <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="messages">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">MESSAGES</div>
+                        </div>
+
                         <h2>
                             ¿Cómo abrir shell de comandos (cmd) desde una carpeta dentro del explorador de Windows 10?
                         </h2>
@@ -260,68 +499,6 @@
                         <pre><var>y</var> = <var>m</var><var>x</var> + <var>b</var></pre>
                         <pre>To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br></pre>
                         <pre>To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></pre>
-                
-                        <div class="row">
-
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-									<img src="dist/img/consola-win10/menu-contextual.png" alt="...">
-                                    <div class="caption">
-                                        <h3><span class="label label-success">1</span> Thumbnail label</h3>
-                                        <div class="bs-callout bs-callout-info">
-                                            <h4>Info</h4>
-                                            <p>
-                                                Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
-                                            </p>
-                                        </div>
-                                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="dist/img/consola-win10/menu-contextual.png" alt="...">
-                                    <div class="caption">
-                                        <h3><span class="label label-success">2</span> Thumbnail label</h3>
-                                        <div class="bs-callout bs-callout-info">
-                                            <h4>Info</h4>
-                                            <p>
-                                                Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
-                                            </p>
-                                        </div>
-                                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="dist/img/consola-win10/menu-contextual.png" alt="...">
-                                    <div class="caption">
-                                        <h3><span class="label label-success">3</span> Thumbnail label</h3>
-                                        <div class="bs-callout bs-callout-info">
-                                            <h4>Info</h4>
-                                            <p>
-                                                Restituir el acceso al Símbolo del sistema en Inicio, el menú WinX y al dar clic derecho en carpetas con la tecla Shift presionada, para iniciar la Consola de CMD <strong>en el directorio actual.</strong>
-                                            </p>
-                                        </div>
-                                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- /.index 1 -->
-
-                    <div role="tabpanel" class="tab-pane fade" id="profile">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">PROFILE</div>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="messages">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">MESSAGES</div>
-                        </div>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="settings">
                         <div class="panel panel-primary">
@@ -349,16 +526,24 @@
         </button>
 
         <span class="text-success">
-            <i class="fa fa-hand-holding-usd fa-lg"></i>&nbsp; 
-            <b>UPIICSA - </b><b>R<small>ECURSOS</small> M<small>ATERIALES</small> (</b>Compras<b>)</b><br />
+            <i class="fa fa-users fa-lg"></i>&nbsp; 
+            <b>Fix it Lab</b><br />
         </span>
         <!-- Default to the left -->
-        <strong>&copy;<!-- © --> 2019 </strong> Desarrollado por Sitio Web - Unidad de Informática (UDI).<br />
-            <i class="fa fa-desktop fa-lg"></i> <i class="fa fa-laptop fa-lg"></i> 
-            <i class="fa fa-tablet-alt fa-lg"></i> <i class="fa fa-mobile-alt fa-lg"></i> 
+        <strong>&copy;<!-- © --> 2020 </strong> Desarrollado por FamE<br />
+        <i class="fa fa-desktop fa-lg"></i> <i class="fa fa-laptop fa-lg"></i>
+        <i class="fa fa-tablet-alt fa-lg"></i> <i class="fa fa-mobile-alt fa-lg"></i><br />
         <b>Version</b> Alpha 0.0.1
     </div> <!-- /.container -->
 </body>
 </html>
 
 <script type="text/javascript" language="javascript" src="dist/js/script.js"></script>
+<script src="https://www.jqueryscript.net/demo/Responsive-Multi-slide-Carousel-Plugin-jQuery-Multislider/js/multislider.js"></script>
+<script>
+    $('#mixedSlider').multislider({
+                duration: 750,
+                interval: 3000,
+                // continuous: true,
+    });
+</script>
