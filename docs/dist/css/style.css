@@ -171,8 +171,8 @@ img.hover-shadow {
 }
 
 /* Style the social media icons with color, if you want */
-.icon-bar a:hover {
-  opacity: 0.8;
+.icon-socialmedia a:hover {
+  opacity: 0.9;
 }
 
 .facebook {
