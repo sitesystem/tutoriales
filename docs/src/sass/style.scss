@@ -1,8 +1,13 @@
 html, body
 {
-    /* font-family: Open sans, sans-serif; */
-    font-family: "Roboto";
-    /* padding-top: 25px; */
+  /* font-family: Open sans, sans-serif; */
+  font-family: "Roboto";
+  /* padding-top: 25px; */
+  background: url("/docs/dist/img/fondo.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .backTotop 
@@ -163,3 +168,5 @@ img.hover-shadow
 .linkedin { background: #007bb5; color: white; }
 
 .youtube { background: #bb0000; color: white; }
+
+.modal-body { min-height: 78vh; }

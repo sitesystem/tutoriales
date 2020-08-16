@@ -2,6 +2,8 @@ html, body {
   /* font-family: Open sans, sans-serif; */
   font-family: "Roboto";
   /* padding-top: 25px; */
+  background: url("/docs/dist/img/fondo.png") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .backTotop {
@@ -203,4 +205,8 @@ img.hover-shadow {
 .youtube {
   background: #bb0000;
   color: white;
+}
+
+.modal-body {
+  min-height: 78vh;
 }
